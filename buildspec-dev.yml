@@ -19,7 +19,7 @@ phases:
       - wget https://releases.hashicorp.com/terraform/"$TERRAFORM_VERSION"/terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
       - unzip terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
       - mv terraform /usr/local/bin
-  pre-build:
+  pre_build:
     on-failure: ABORT
     commands:
       - echo terraform execution started on `date`
@@ -34,7 +34,7 @@ phases:
       - terraform validate
       - terraform plan -lock=false -input=false -var-file=dev.tfvars
       - terraform $TF_COMMAND -input=false -var-file=dev.tfvars -auto-approve
-  post-build:
+  post_build:
     on-failure: ABORT
     commands:
       - echo terraform execution completed on `date`
