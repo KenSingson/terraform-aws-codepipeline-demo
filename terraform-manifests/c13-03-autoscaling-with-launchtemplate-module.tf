@@ -81,7 +81,7 @@ module "autoscaling" {
 
   # Target Scaling Policies
   scaling_policies = {
-    "${local.name}"-avg-cpu-policy-greater-than-50 = {
+    "${local.name}-avg-cpu-policy-greater-than-50" = {
       policy_type               = "TargetTrackingScaling"
       estimated_instance_warmup = 180
       target_tracking_configuration = {
@@ -91,7 +91,7 @@ module "autoscaling" {
         target_value = 50.0
       }
     },
-    "${local.name}"-alb_target_requests_greater_than_yy = {
+    "${local.name}-alb_target_requests_greater_than_yy" = {
       policy_type               = "TargetTrackingScaling"
       estimated_instance_warmup = 120
       target_tracking_configuration = {
