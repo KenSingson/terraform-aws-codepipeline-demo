@@ -12,14 +12,14 @@ env:
 phases:
   install: 
     runtime-versions:
-      python: 3.7
+      python: 3.9
     on-failure: ABORT
     commands:
       - tf_version=$TERRAFORM_VERSION
       - wget https://releases.hashicorp.com/terraform/"$TERRAFORM_VERSION"/terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
       - unzip terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
       - mv terraform /usr/local/bin
-  pre-build:
+  pre_build:
     on-failure: ABORT
     commands:
       - echo terraform execution started on `date`
@@ -34,7 +34,7 @@ phases:
       - terraform validate
       - terraform plan -lock=false -input=false -var-file=stag.tfvars
       - terraform $TF_COMMAND -input=false -var-file=stag.tfvars -auto-approve
-  post-build:
+  post_build:
     on-failure: ABORT
     commands:
       - echo terraform execution completed on `date`
