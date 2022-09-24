@@ -70,7 +70,7 @@ module "alb" {
     # Rule 1" /app1* should go to App1 EC2 Instances
     {
       https_listener_index = 0
-
+      priority = 1
       actions = [
         {
           type = "forward"
