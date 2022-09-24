@@ -2,13 +2,13 @@ module "autoscaling" {
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "6.5.2"
 
-  # name = "${local.name}-asg-lt"
+  name = "${local.name}-asg-lt"
   # use_name_prefix = false
-  use_name_prefix = "${local.name}-"
+  # use_name_prefix = "${local.name}-"
 
   # Launch Template
-  # launch_template_name = "${local.name}-asg-lt1"
-  launch_template_use_name_prefix = "${local.name}-"
+  launch_template_name = "${local.name}-asg-lt1"
+  # launch_template_use_name_prefix = "${local.name}-"
   launch_template_description = "launch template for asg"
   update_default_version = true
 
