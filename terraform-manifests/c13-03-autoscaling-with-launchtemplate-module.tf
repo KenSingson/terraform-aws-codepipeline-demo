@@ -1,4 +1,7 @@
 module "autoscaling" {
+  depends_on = [
+    module.alb
+  ]
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "6.5.2"
 
